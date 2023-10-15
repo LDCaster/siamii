@@ -22,7 +22,7 @@ class UserModel extends Model
 
     public function getUserDetails()
     {
-        return $this->select('users.*, unit_prodi.nama')
+        return $this->select('users.*, unit_prodi.nama as nama_unit_prodi')
             ->join('unit_prodi', 'unit_prodi.id = users.unit_prodi_id')
             ->findAll();
     }

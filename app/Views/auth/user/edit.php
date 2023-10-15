@@ -11,18 +11,15 @@
             <!-- Bagian Role -->
             <div class="col-md-12">
                 <div class="form-floating">
-                    <select class="form-control <?= (session('errors.role_id')) ? 'is-invalid' : ''; ?>" id="role_id" name="role_id" aria-label="Default select example">
-                        <option>--- Pilih Roles ---</option>
-                        <?php foreach ($role as $r) : ?>
-                            <option value="<?= $r['id']; ?>" <?= ($r['id'] == $user['role_id']) ? 'selected' : ''; ?>>
-                                <?= $r['nama']; ?>
-                            </option>
-                        <?php endforeach; ?>
+                    <select class="form-control <?= (session('errors.role')) ? 'is-invalid' : ''; ?>" id="role" name="role" aria-label="Default select example">
+                        <option value="admin" <?= ($user['role'] == 'admin') ? 'selected' : ''; ?>>Admin</option>
+                        <option value="auditee" <?= ($user['role'] == 'auditee') ? 'selected' : ''; ?>>Auditee</option>
+                        <option value="auditor" <?= ($user['role'] == 'auditor') ? 'selected' : ''; ?>>Auditor</option>
                     </select>
-                    <label for="role_id">Role</label>
-                    <?php if (session('errors') && array_key_exists('role_id', session('errors'))) : ?>
+                    <label for="role">Role</label>
+                    <?php if (session('errors') && array_key_exists('role', session('errors'))) : ?>
                         <div class="invalid-feedback">
-                            <?= session('errors')['role_id']; ?>
+                            <?= session('errors')['role']; ?>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -35,7 +32,7 @@
                         <option>--- Pilih Unit ---</option>
                         <?php foreach ($unit as $u) : ?>
                             <option value="<?= $u['id']; ?>" <?= ($u['id'] == $user['unit_prodi_id']) ? 'selected' : ''; ?>>
-                                <?= $u['nama_unit_prodi']; ?>
+                                <?= $u['nama']; ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -102,7 +99,7 @@
 
             <!-- Display the current photo -->
             <div class="col-md-12 mt-3">
-                <img id="image-preview" src="<?= base_url('assets/img/' . $user['image']); ?>" alt="Current User Image" width="100" class="rounded-circle">
+                <img id="image-preview" src="<?= base_url('assets/img/profile/' . $user['image']); ?>" alt="Current User Image" width="100" class="rounded-circle">
             </div>
 
             <!-- Bagian Email -->
@@ -153,4 +150,6 @@
 
     </div>
 </div>
+
+
 <?= $this->endSection(); ?>

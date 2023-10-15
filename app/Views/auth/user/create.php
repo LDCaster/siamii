@@ -9,29 +9,27 @@
             <?= csrf_field(); ?>
             <div class="col-md-12">
                 <div class="form-floating">
-                    <select class="form-control <?= (session('errors.role_id')) ? 'is-invalid' : ''; ?>" id="role_id" name="role_id" aria-label="Default select example">
-                        <option>--- Pilih Roles ---</option>
-                        <?php foreach ($role as $r) : ?>
-                            <option value="<?= $r['id']; ?>" <?= (old('role_id') == $r['id']) ? 'selected' : ''; ?>>
-                                <?= $r['nama']; ?>
-                            </option>
-                        <?php endforeach; ?>
+                    <select class="form-control <?= (session('errors.role')) ? 'is-invalid' : ''; ?>" id="role" name="role" aria-label="Default select example">
+                        <option value="admin" <?= (old('role') == 'admin') ? 'selected' : ''; ?>>Admin</option>
+                        <option value="auditee" <?= (old('role') == 'auditee') ? 'selected' : ''; ?>>Auditee</option>
+                        <option value="auditor" <?= (old('role') == 'auditor') ? 'selected' : ''; ?>>Auditor</option>
                     </select>
-                    <label for="role_id">Role</label>
-                    <?php if (session('errors') && array_key_exists('role_id', session('errors'))) : ?>
+                    <label for="role">Role</label>
+                    <?php if (session('errors') && array_key_exists('role', session('errors'))) : ?>
                         <div class="invalid-feedback">
-                            <?= session('errors')['role_id']; ?>
+                            <?= session('errors')['role']; ?>
                         </div>
                     <?php endif; ?>
                 </div>
             </div>
+
             <div class="col-md-12">
                 <div class="form-floating">
                     <select class="form-control <?= (session('errors.unit_prodi_id')) ? 'is-invalid' : ''; ?>" id="unit_prodi_id" name="unit_prodi_id" placeholder="Unit" aria-label="Default select example">
                         <option>--- Pilih Unit ---</option>
                         <?php foreach ($unit as $u) : ?>
                             <option value="<?= $u['id']; ?>" <?= (old('unit_prodi_id') == $u['id']) ? 'selected' : ''; ?>>
-                                <?= $u['nama_unit_prodi']; ?>
+                                <?= $u['nama']; ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -98,7 +96,7 @@
 
             <!-- Display the selected image for new user -->
             <div class="col-md-12 mt-3">
-                <img id="image-preview" src="<?= base_url('assets/img/default.png'); ?>" alt="Selected Image" width="100" class="rounded-circle">
+                <img id="image-preview" src="<?= base_url('assets/img/profile/default.png'); ?>" alt="Selected Image" width="100" class="rounded-circle">
             </div>
 
             <div class="col-md-12">

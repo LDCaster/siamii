@@ -147,6 +147,7 @@
             const newImageInput = document.getElementById('new_image');
             newImageInput.addEventListener('change', updateImagePreview);
         </script>
+
         <script>
             // Function to update the image preview for new user
             function updateImagePreview(event) {

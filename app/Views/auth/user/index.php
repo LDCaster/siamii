@@ -35,7 +35,7 @@
                             <?php foreach ($user as $u) : ?>
                                 <tr>
                                     <th scote="row"><?= $i++; ?></th>
-                                    <td><?= $u['role_nama'] ?></td>
+                                    <td><?= $u['role'] ?></td>
                                     <td><?= $u['nama_unit_prodi'] ?></td>
                                     <td><?= $u['nama']; ?></td>
                                     <td><?= $u['nik_nip']; ?></td>
