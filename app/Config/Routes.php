@@ -26,3 +26,26 @@ $routes->post('/user/save', 'UserController::save');
 $routes->get('/user/edit/(:num)', 'UserController::edit/$1');
 $routes->post('/user/update/(:num)', 'UserController::update/$1');
 $routes->get('/user/delete/(:num)', 'UserController::delete/$1');
+
+$routes->get('/siklus', 'SiklusController::index');
+$routes->get('/siklus/create', 'SiklusController::create');
+$routes->post('/siklus/save', 'SiklusController::save');
+$routes->get('/siklus/edit/(:num)', 'SiklusController::edit/$1');
+$routes->post('/siklus/update/(:num)', 'SiklusController::update/$1');
+$routes->get('/siklus/delete/(:num)', 'SiklusController::delete/$1');
+
+$routes->get('/standar', 'StandarController::index');
+$routes->get('/standar/create', 'StandarController::create');
+$routes->post('/standar/save', 'StandarController::save');
+$routes->get('/standar/edit/(:num)', 'StandarController::edit/$1');
+$routes->post('/standar/update/(:num)', 'StandarController::update/$1');
+$routes->get('/standar/delete/(:num)', 'StandarController::delete/$1');
+
+// $routes->get('butiran/get-sub-standar/(:num)', 'ButiranController::getSubStandar/$1');
+
+$routes->get('/sub-standar/(:num)', 'SubStandarController::index/$1');
+$routes->get('/sub-standar/create/(:num)', 'SubStandarController::create/$1');
+$routes->post('/sub-standar/save', 'SubStandarController::save');
+$routes->get('/sub-standar/edit/(:num)', 'SubStandarController::edit/$1');
+$routes->post('/sub-standar/update/(:num)', 'SubStandarController::update/$1');
+$routes->get('/sub-standar/delete/(:num)', 'SubStandarController::delete/$1');
