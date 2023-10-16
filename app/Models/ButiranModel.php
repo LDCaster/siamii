@@ -13,7 +13,7 @@ class ButiranModel extends Model
 
     public function getButiranWithStandar()
     {
-        return $this->select('butiran_mutu.*, sub_standar.nama_sub, standar.standar, standar.tahun_periode')
+        return $this->select('butiran_mutu.*, sub_standar.nama_sub, standar.nama, standar.tahun_periode')
             ->join('sub_standar', 'sub_standar.id = butiran_mutu.sub_standar_id')
             ->join('standar', 'standar.id = sub_standar.standar_id')
             ->findAll();
@@ -21,7 +21,7 @@ class ButiranModel extends Model
 
     public function getButiranWithStandarFind($id)
     {
-        return $this->select('butiran_mutu.*, sub_standar.nama_sub, standar.standar, standar.tahun_periode')
+        return $this->select('butiran_mutu.*, sub_standar.nama_sub, standar.nama, standar.tahun_periode, sub_standar.standar_id')
             ->join('sub_standar', 'sub_standar.id = butiran_mutu.sub_standar_id')
             ->join('standar', 'standar.id = sub_standar.standar_id')
             ->where('butiran_mutu.id', $id)
