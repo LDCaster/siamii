@@ -29,8 +29,8 @@ class ButiranModel extends Model
     }
 
 
-    public function getButiranMutuByProses($prosesId)
+    public function getButiranMutuByProses($subStandarId)
     {
-        return $this->where('sub_standar_id', $prosesId)->findAll();
+        return $this->where('sub_standar_id', $subStandarId)->findAll();
     }
 }

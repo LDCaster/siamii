@@ -11,6 +11,18 @@ class ProsesAMIModel extends Model
         'tahun_periode_id', 'standar_id', 'auditor_id', 'tgl_mulai', 'tgl_selesai', 'status', 'bukti_rtm', 'bukti_rtl', 'deskripsi_pengendalian', 'bukti_peningkatan', 'created_at', 'updated_at'
     ];
 
+    public function getSubStandarByStandarId($standarId)
+    {
+        return $this->select('proses_ami.*, standar.nama, sub_standar.id as sub_standar_id, sub_standar.nama_sub as nama_sub_standar,  tahun_periode.tahun, tahun_periode.periode')
+            ->join('standar', 'standar.id = proses_ami.standar_id')
+            ->join('tahun_periode', 'tahun_periode.id = proses_ami.tahun_periode_id')
+            ->join('sub_standar', 'sub_standar.standar_id = proses_ami.standar_id')
+            ->where('proses_ami.id', $standarId)
+            ->find();
+    }
+
+
+
     public function getProsesAMIByAuditee($unitProdiId)
     {
         return $this->join('standar', 'standar.id = proses_ami.standar_id')
@@ -66,7 +78,7 @@ class ProsesAMIModel extends Model
 
     public function getProsesAMIByTahunPeriodeAkademikId($tahun_periode_akademik_id)
     {
-        return $this->select('proses_ami.*, tahun_periode.tahun, tahun_periode.periode, standar.standar, users.nama as nama_auditor')
+        return $this->select('proses_ami.*, tahun_periode.tahun, tahun_periode.periode, standar.nama, users.nama as nama_auditor')
             ->join('tahun_periode', 'tahun_periode.id = proses_ami.tahun_periode_id')
             ->join('standar', 'standar.id = proses_ami.standar_id')
             ->join('users', 'users.id = proses_ami.auditor_id')

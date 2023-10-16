@@ -8,7 +8,7 @@ class HAMIModel extends Model
 {
     protected $table = 'hasil_audit_mutu_internal';
     protected $allowedFields = [
-        'proses_ami_id', 'butiran_mutu_isi', 'indikator_target', 'created_at', 'updated_at'
+        'proses_ami_id', 'sub_standar', 'butiran_mutu_isi', 'indikator_target', 'created_at', 'updated_at'
     ];
 
     public function ByHAMIid($prosesAmiId)

@@ -11,6 +11,7 @@ class HasilAuditMutuInternal extends Migration
         $this->forge->addField([
             'id' => ['type' => 'INT', 'constraint' => 5, 'unsigned' => true, 'auto_increment' => true],
             'proses_ami_id' => ['type' => 'INT', 'constraint' => 5, 'unsigned' => true],
+            'sub_standar' => ['type' => 'TEXT'],
             'butiran_mutu_isi' => ['type' => 'TEXT'],
             'indikator_target' => ['type' => 'TEXT'],
             'created_at' => ['type' => 'DATETIME', 'null' => true],

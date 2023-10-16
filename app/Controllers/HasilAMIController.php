@@ -42,8 +42,8 @@ class HasilAMIController extends BaseController
     public function create($id)
     {
         // Ambil data prosesAMI berdasarkan ID
-        $prosesAMI = $this->prosesAMIModel->getProsesAMIByTahunPeriodeAkademikId($id);
-        // dd($prosesAMI);/
+        $prosesAMI = $this->prosesAMIModel->getSubStandarByStandarId($id);
+        // dd($prosesAMI);
 
         // Ambil butiran_mutu sesuai dengan standar_id dari data prosesAMI
         $butiran_mutu = $this->butiranmutuModel->findAll();
@@ -55,38 +55,33 @@ class HasilAMIController extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
-        return view('ami/hasilami/create', $data);
+        return view('pages/ami/hasilami/create', $data);
     }
 
 
-    public function getButiranMutu($prosesId)
+    public function getButiranMutu($subStandarId)
     {
         // Gantilah "ModelAnda" dengan nama model yang sesuai
-        $butiranMutu = $this->butiranmutuModel->getButiranMutuByProses($prosesId);
-        // dd($butiranMutu);`
+        $butiranMutu = $this->butiranmutuModel->getButiranMutuByProses($subStandarId);
+        // dd($butiranMutu);
 
         // Kembalikan data dalam format JSON
         return $this->response->setJSON($butiranMutu);
     }
 
-    public function getSubStandar($subId)
-    {
-        // Gantilah "ModelAnda" dengan nama model yang sesuai
-        $subStandar = $this->substandarModel->getDataByStandarId($subId);
-
-        // Kembalikan data dalam format JSON
-        return $this->response->setJSON($subStandar);
-    }
-
     public function save()
     {
-
-
         $validationRules = [
             'proses_ami_id' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Siklus dan Standar harus diisi!',
+                ],
+            ],
+            'sub_standar_id' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Sub Standar harus diisi!',
                 ],
             ],
             'butir_mutu_isi' => [
@@ -108,11 +103,12 @@ class HasilAMIController extends BaseController
         }
 
         $proses_ami_id = $this->request->getVar('proses_ami_id');
+        $sub_standar = $this->request->getVar('sub_standar_id'); // Mengambil nilai bukan ID
         $butiran_mutu_isi = $this->request->getVar('butir_mutu_isi'); // Mengambil nilai bukan ID
         $indikator_target = $this->request->getVar('indikator_target');
 
         $existingData = $this->hasilamiModel->where([
-            'proses_ami_id' => $proses_ami_id,
+            'sub_standar' => $sub_standar,
             'butiran_mutu_isi' => $butiran_mutu_isi,
         ])->first();
 
@@ -125,6 +121,7 @@ class HasilAMIController extends BaseController
         // Continue with saving the new data
         $this->hasilamiModel->save([
             'proses_ami_id' => $proses_ami_id,
+            'sub_standar' => $sub_standar,
             'butiran_mutu_isi' => $butiran_mutu_isi,
             'indikator_target' => $indikator_target,
         ]);

@@ -67,3 +67,8 @@ $routes->get('proses-ami/toggle-status/(:num)', 'ProsesAMIController::toggleStat
 $routes->get('proses-ami/export-spreadsheet/(:num)', 'ProsesAMIController::exportSpreadsheet/$1');
 
 $routes->get('/proses-ami/hasil-ami/(:num)', 'HasilAMIController::index/$1');
+
+$routes->get('/hasil-ami/create/(:num)', 'HasilAMIController::create/$1');
+$routes->post('/hasil-ami/save', 'HasilAMIController::save');
+$routes->get('/get-butiran-mutu/(:num)', 'HasilAMIController::getButiranMutu/$1');
+$routes->get('hasil-ami/delete/(:num)', 'HasilAMIController::delete/$1');

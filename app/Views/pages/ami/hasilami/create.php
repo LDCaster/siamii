@@ -15,17 +15,21 @@
         <form action="<?= base_url('/hasil-ami/save'); ?>" method="post" class="row g-3">
             <?= csrf_field(); ?>
             <div class="col-md-12">
+                <input type="text" name="proses_ami_id" id="proses_ami_id" value="<?= $prosesAMI[0]['id']; ?>" hidden>
+            </div>
+            <div class="col-md-12">
                 <div class="form-floating">
-                    <select class="form-control <?= (session('errors.proses_ami_id')) ? 'is-invalid' : ''; ?>" id="proses_ami_id" name="proses_ami_id" placeholder="Siklus/Standar" value="<?= old('proses_ami_id'); ?>" aria-label="Default select example">
-                        <option selected>--- Pilih Periode/Standar ---</option>
+                    <select class="form-control <?= (session('errors.sub_standar_id')) ? 'is-invalid' : ''; ?>" id="sub_standar_id" name="sub_standar_id" placeholder="Sub Standar" value="<?= old('sub_standar_id'); ?>" aria-label="Default select example">
+                        <option selected>--- Pilih Sub Standar ---</option>
                         <?php foreach ($prosesAMI as $proses) : ?>
-                            <option value="<?= $proses['id']; ?>"><?= $proses['tahun']; ?>-<?= $proses['periode']; ?>/<?= $proses['standar']; ?></option>
+                            <option value="<?= $proses['id']; ?>" data-sub-standar-id="<?= $proses['sub_standar_id']; ?>"><?= $proses['nama_sub_standar']; ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <label for="floatingName">Periode/Standar</label>
-                    <?php if (session('errors') && array_key_exists('proses_ami_id', session('errors'))) : ?>
+
+                    <label for="floatingName">Sub Standar</label>
+                    <?php if (session('errors') && array_key_exists('sub_standar_id', session('errors'))) : ?>
                         <div class="invalid-feedback">
-                            <?= session('errors')['proses_ami_id']; ?>
+                            <?= session('errors')['sub_standar_id']; ?>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -67,14 +71,12 @@
 </div>
 
 <script>
-    // Event listener untuk dropdown "proses_ami_id"
-    document.getElementById('proses_ami_id').addEventListener('change', function() {
-        var selectedProsesId = this.value;
-        // Dapatkan standar_id yang sesuai dengan selectedProsesId
-        var selectedStandarId = getStandarId(selectedProsesId);
+    // Event listener untuk dropdown "sub_standar"
+    document.getElementById('sub_standar_id').addEventListener('change', function() {
+        var selectedSubStandarId = this.options[this.selectedIndex].getAttribute('data-sub-standar-id');
 
-        // Lakukan permintaan AJAX untuk mendapatkan butiran_mutu sesuai dengan standar yang dipilih
-        fetch('/get-butiran-mutu/' + selectedStandarId)
+        // Lakukan permintaan AJAX untuk mendapatkan butiran_mutu sesuai dengan sub_standar_id yang dipilih
+        fetch('/get-butiran-mutu/' + selectedSubStandarId) // Ganti URL sesuai dengan URL yang sesuai di controller
             .then(function(response) {
                 return response.json();
             })
@@ -84,21 +86,28 @@
 
                 // Hapus semua opsi saat ini dari dropdown "butir_mutu_isi"
                 butiranDropdown.innerHTML = '';
-                // console.log(data);
+
                 // Tambahkan opsi yang baru berdasarkan data yang diterima dari server
                 data.forEach(function(butir) {
                     var option = document.createElement('option');
                     option.value = butir.butiran_mutu_isi;
                     option.textContent = butir.butiran_mutu_isi;
+
+                    // Hapus elemen HTML yang tidak diinginkan dari teks yang akan ditampilkan
+                    option.textContent = option.textContent.replace(/<[^>]*>/g, '');
+
                     butiranDropdown.appendChild(option);
                 });
             });
     });
 
+
     // Fungsi untuk mendapatkan standar_id sesuai dengan selectedProsesId
     function getStandarId(selectedProsesId) {
         // Dapatkan standar_id yang sesuai dengan selectedProsesId dari $prosesAMI
         var prosesAMI = <?php echo json_encode($prosesAMI); ?>;
+
+        console.log(prosesAMI);
         for (var i = 0; i < prosesAMI.length; i++) {
             if (prosesAMI[i].id == selectedProsesId) {
                 return prosesAMI[i].standar_id;
