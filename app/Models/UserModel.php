@@ -37,7 +37,7 @@ class UserModel extends Model
     {
         return $this->select('users.*, unit_prodi.nama as nama_unit_prodi')
             ->join('unit_prodi', 'unit_prodi.id = users.unit_prodi_id')
-            ->where('users.role_id', 3) // Ubah sesuai dengan id peran "auditor" yang sesuai dalam database
+            ->where('users.role', 3) // Ubah sesuai dengan id peran "auditor" yang sesuai dalam database
             ->findAll();
     }
 }

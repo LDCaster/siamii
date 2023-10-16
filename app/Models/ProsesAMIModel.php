@@ -27,7 +27,7 @@ class ProsesAMIModel extends Model
 
     public function getProsesAMI()
     {
-        return $this->select('proses_ami.*, tahun_periode.tahun, tahun_periode.periode, standar.standar, users.nama as nama_auditor')
+        return $this->select('proses_ami.*, tahun_periode.tahun, tahun_periode.periode, standar.nama, users.nama as nama_auditor')
             ->join('tahun_periode', 'tahun_periode.id = proses_ami.tahun_periode_id')
             ->join('standar', 'standar.id = proses_ami.standar_id')
             ->join('users', 'users.id = proses_ami.auditor_id')

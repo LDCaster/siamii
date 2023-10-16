@@ -65,3 +65,5 @@ $routes->post('/proses-ami/update/(:num)', 'ProsesAMIController::update/$1');
 $routes->get('/proses-ami/delete/(:num)', 'ProsesAMIController::delete/$1');
 $routes->get('proses-ami/toggle-status/(:num)', 'ProsesAMIController::toggleStatus/$1');
 $routes->get('proses-ami/export-spreadsheet/(:num)', 'ProsesAMIController::exportSpreadsheet/$1');
+
+$routes->get('/proses-ami/hasil-ami/(:num)', 'HasilAMIController::index/$1');
