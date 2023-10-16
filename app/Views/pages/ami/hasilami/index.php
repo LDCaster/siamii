@@ -42,82 +42,83 @@
                                         </button>
                                     </h1>
                                     <div id="collapse<?= $key ?>" class="accordion-collapse collapse" aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
-                                        <a href="<?= base_url('hasil-ami/delete/' . $proses['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus hasil ini?')">
-                                            <i class="bi bi-trash" title="Hapus"></i>
-                                        </a>
+
                                         <div class="accordion-body">
                                             <strong>Indikator Target : </strong> <?= $proses['indikator_target']; ?>.
                                         </div>
-                                    </div>
-                                    <div id="collapse<?= $key ?>" class="accordion-collapse collapse" aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <strong>Status Ketercapaian : </strong> <?= $proses['status_ketercapaian']; ?>.
+                                        <div id="collapse<?= $key ?>" class="accordion-collapse collapse" aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>Status Ketercapaian : </strong> <?= $proses['status_ketercapaian']; ?>.
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <strong>Hasil Evaluasi Diri : </strong> <?= $proses['hasil_evaluasi_diri']; ?>.
+                                        <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>Hasil Evaluasi Diri : </strong> <?= $proses['hasil_evaluasi_diri']; ?>.
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <strong>Bukti Evaluasi Diri : </strong> <a href="<?= $proses['bukti_evaluasi_diri']; ?>"><?= $proses['bukti_evaluasi_diri']; ?></a>.
+                                        <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>Bukti Evaluasi Diri : </strong> <a href="<?= $proses['bukti_evaluasi_diri']; ?>"><?= $proses['bukti_evaluasi_diri']; ?></a>.
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <strong>Hasil Audit Dokumen : </strong> <?= $proses['hasil_audit_dokumen']; ?>.
+                                        <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>Hasil Audit Dokumen : </strong> <?= $proses['hasil_audit_dokumen']; ?>.
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <strong>Daftar Tilik : </strong> <?= $proses['daftar_tilik']; ?>.
+                                        <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>Daftar Tilik : </strong> <?= $proses['daftar_tilik']; ?>.
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <strong>Hasil Temuan Audit : </strong> <?= $proses['hasil_temuan_audit']; ?>.
+                                        <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>Hasil Temuan Audit : </strong> <?= $proses['hasil_temuan_audit']; ?>.
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <strong>Status Temuan : </strong> <?= $proses['status_temuan']; ?>.
+                                        <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>Status Temuan : </strong> <?= $proses['status_temuan']; ?>.
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <strong>Hasil Rekomendasi : </strong> <?= $proses['hasil_rekomendasi']; ?>.
+                                        <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>Hasil Rekomendasi : </strong> <?= $proses['hasil_rekomendasi']; ?>.
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <strong>Bukti RTM : </strong> <a href="<?= $proses['bukti_rtm']; ?>"><?= $proses['bukti_rtm']; ?></a> .
+                                        <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>Bukti RTM : </strong> <a href="<?= $proses['bukti_rtm']; ?>"><?= $proses['bukti_rtm']; ?></a> .
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <strong>Bukti RTlL : </strong> <a href="<?= $proses['bukti_rtl']; ?>"><?= $proses['bukti_rtl']; ?></a>.
+                                        <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>Bukti RTlL : </strong> <a href="<?= $proses['bukti_rtl']; ?>"><?= $proses['bukti_rtl']; ?></a>.
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <strong>Deskripsi Pengendalian : </strong> <?= $proses['deskripsi_pengendalian']; ?>.
+                                        <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>Deskripsi Pengendalian : </strong> <?= $proses['deskripsi_pengendalian']; ?>.
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <strong>Bukti Peningkatan : </strong> <?= $proses['bukti_peningkatan']; ?>.
+                                        <div id="collapse<?= $key ?>" class="accordion-collapse collapse " aria-labelledby="heading<?= $key ?>" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>Bukti Peningkatan : </strong> <?= $proses['bukti_peningkatan']; ?>.
+                                            </div>
                                         </div>
+                                        <a href="<?= base_url('hasil-ami/delete/' . $proses['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus hasil ini?')">
+                                            <i class="bi bi-trash" title="Hapus"></i>
+                                        </a>
                                     </div>
-                                </div>
-                            </div><!-- End Default Accordion Example -->
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                                </div><!-- End Default Accordion Example -->
+                            <?php endforeach; ?>
+                        <?php endif; ?>
 
+                            </div>
                 </div>
             </div>
         </div>
-    </div>
 </section>
+
 
 <?= $this->endsection(); ?>
