@@ -24,6 +24,12 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'csrf'                          => \CodeIgniter\Filters\CSRF::class,
+        'isLogin'                       => \App\Filters\AuthFilter::class,
+        'isNotAdmin'                    => \App\Filters\AdminOnlyFilter::class,
+        'isNotAuditee'                  => \App\Filters\AuditeeAdminFilter::class,
+        'isNotAuditor'                  => \App\Filters\AuditorAdminFilter::class,
+        'checkStatusProsesAmi'          => \App\Filters\ProsesAmiStatusFilter::class,
     ];
 
     /**
@@ -66,5 +72,81 @@ class Filters extends BaseConfig
      * Example:
      * 'isLoggedIn' => ['before' => ['account/*', 'profiles/*']]
      */
-    public array $filters = [];
+    public array $filters = [
+        'isLogin'       => [
+            'before' =>
+            [
+                'dashboard',
+                'standar',
+                'standar/*',
+
+                'butiran',
+                'butiran/*',
+
+                'siklus',
+                'siklus/*',
+
+                'unit',
+                'unit/*',
+
+                'user',
+                'user/*',
+
+                'proses-ami',
+                'proses-ami/*',
+
+                'hasil-ami',
+                'hasil-ami/*',
+
+                'pengendalian',
+            ]
+        ],
+        'isNotAdmin' => [
+            'before' => [
+                'standar',
+                'standar/*',
+
+                'butiran',
+                'butiran/*',
+
+                'siklus',
+                'siklus/*',
+
+                'unit',
+                'unit/*',
+
+                'user',
+                'user/*',
+
+                'proses-ami',
+                'proses-ami/*',
+            ]
+        ],
+        'isNotAuditee' => [
+            'before' => [
+                'proses-ami/*',
+
+                'hasil-ami/evaluasi-diri',
+                'hasil-ami/evaluasi-diri/*',
+
+                'evaluasi-diri',
+            ]
+        ],
+        'isNotAuditor' => [
+            'before' => [
+                'hasil-ami/audit',
+                'hasil-ami/audit/*',
+
+                'evaluasi-audit',
+            ]
+        ],
+        'checkStatusProsesAmi' => [
+            'before' => [
+                'hasil-ami/detail/*',
+                'hasil-ami/detail-audit/*',
+                'hasil-ami/detail-pengendalian/*',
+                'hasil-ami/detail-peningkatan/*',
+            ],
+        ]
+    ];
 }

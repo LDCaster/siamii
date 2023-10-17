@@ -29,6 +29,8 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Proses AMI / Standar</th>
+                                <th scope="col">Bukti RTM</th>
+                                <th scope="col">Bukti RTL</th>
                                 <th scope="col">Tanggal Mulai - Selesai</th>
                                 <th scope="col">Aksi</th>
                             </tr>
@@ -38,14 +40,24 @@
                             <?php foreach ($prosesAMI as $proses) : ?>
                                 <tr>
                                     <th scope="row"><?= $i++; ?></th>
-                                    <td><span class="green-box"><?= $proses['tahun']; ?></span> - <?= $proses['periode']; ?> / <?= $proses['standar']; ?></td>
+                                    <td><span class="green-box"><?= $proses['tahun']; ?></span> - <?= $proses['periode']; ?> / <?= $proses['nama_standar']; ?></td>
+                                    <td>
+                                        <?php if (!empty($proses['bukti_rtm'])) : ?>
+                                            <a class="btn btn-primary" href="<?= $proses['bukti_rtm']; ?>" target="_blank"><i class="bi bi-link-45deg"></i></a>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <?php if (!empty($proses['bukti_rtl'])) : ?>
+                                            <a class="btn btn-primary" href="<?= $proses['bukti_rtl']; ?>" target="_blank"><i class="bi bi-link-45deg"></i></a>
+                                        <?php endif; ?>
+                                    </td>
                                     <td><?= $proses['tgl_mulai']; ?> - <?= $proses['tgl_selesai']; ?></td>
                                     <td>
                                         <?php if ($proses['status'] == 1 || $isAdmin) : ?>
-                                            <a href="<?= base_url('hasil-ami/detail-pengendalian/' . $proses['id']); ?>" class="btn btn-primary btn-sm"><i class="bi bi-eye-fill" title="Detail"></i></a>
+                                            <a href="<?= base_url('hasil-ami/pengendalian/' . $proses['id']); ?>" class="btn btn-warning btn-sm"><i class="bi bi-arrow-up-circle-fill" title="Ubah Pengendalian"></i></a>
                                         <?php else : ?>
                                             <!-- Tautan tidak dapat diakses jika status adalah 0 -->
-                                            <button class="btn btn-secondary btn-sm" disabled><i class="bi bi-eye-fill" title="Detail"></i></button>
+                                            <button class="btn btn-secondary btn-sm" disabled><i class="bi bi-arrow-up-circle-fill" title="Pengendalian"></i></button>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
