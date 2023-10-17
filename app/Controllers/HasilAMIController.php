@@ -103,12 +103,13 @@ class HasilAMIController extends BaseController
         }
 
         $proses_ami_id = $this->request->getVar('proses_ami_id');
-        $sub_standar = $this->request->getVar('sub_standar_id'); // Mengambil nilai bukan ID
+        $sub_standar_id = $this->request->getVar('sub_standar_id'); // Mengambil ID dari dropdown
         $butiran_mutu_isi = $this->request->getVar('butir_mutu_isi'); // Mengambil nilai bukan ID
         $indikator_target = $this->request->getVar('indikator_target');
 
+        // dd($sub_standar_id);
         $existingData = $this->hasilamiModel->where([
-            'sub_standar' => $sub_standar,
+            'sub_standar' => $sub_standar_id, // Ubah menjadi sub_standar_id
             'butiran_mutu_isi' => $butiran_mutu_isi,
         ])->first();
 
@@ -121,7 +122,7 @@ class HasilAMIController extends BaseController
         // Continue with saving the new data
         $this->hasilamiModel->save([
             'proses_ami_id' => $proses_ami_id,
-            'sub_standar' => $sub_standar,
+            'sub_standar' => $sub_standar_id, // Simpan sub_standar_id yang sudah diubah
             'butiran_mutu_isi' => $butiran_mutu_isi,
             'indikator_target' => $indikator_target,
         ]);
@@ -168,23 +169,5 @@ class HasilAMIController extends BaseController
 
         // Redirect back to the Hasil AMI index page
         return redirect()->to('/proses-ami/hasil-ami/' . $hasilAMI['proses_ami_id']);
-    }
-
-
-    public function detail($id)
-    {
-        $hasilAMI = $this->hasilamiModel->getDataByProsesAmiId($id);
-        // dd($hasilAMI);
-
-        if (!$hasilAMI) {
-            return redirect()->to('/dashboard')->with('error', 'Data Hasil Audit Mutu Internal belum ditemukan!');
-        }
-
-        $data = [
-            'title' => 'Detail Hasil AMI',
-            'hasilAMI' => $hasilAMI,
-        ];
-
-        return view('ami/detail', $data);
     }
 }

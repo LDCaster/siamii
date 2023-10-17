@@ -48,12 +48,10 @@ class ProsesAMIModel extends Model
 
     public function getProsesAMIWithDetails()
     {
-        // $user_id = $_SESSION['user_id'];
-        // $role_id = $_SESSION['role_id'];
         $user_id = session('user_id');
-        $role_id = session('role_id');
+        $role_id = session('role');
 
-        $query = $this->select('proses_ami.*, tahun_periode.tahun, tahun_periode.periode, standar.standar, users.nama as nama_auditor, standar.unit_prodi_id, unit_prodi.nama_unit_prodi')
+        $query = $this->select('proses_ami.*, tahun_periode.tahun, tahun_periode.periode, standar.nama as nama_standar, users.nama as nama_auditor, standar.unit_prodi_id, unit_prodi.nama')
             ->join('tahun_periode', 'tahun_periode.id = proses_ami.tahun_periode_id')
             ->join('standar', 'standar.id = proses_ami.standar_id')
             ->join('users', 'users.id = proses_ami.auditor_id')
@@ -65,7 +63,7 @@ class ProsesAMIModel extends Model
         } elseif ($role_id == 'auditee') {
             // If the user is an auditee, retrieve data based on nama_unit_prodi
             $nama_unit_prodi = $_SESSION['unit_prodi_id'];
-            $query->where('unit_prodi.nama_unit_prodi', $nama_unit_prodi);
+            $query->where('unit_prodi.nama', $nama_unit_prodi);
         } elseif ($role_id == 'admin') {
             // If the user is an admin, no specific filtering is needed, so no need to add any conditions.
         } else {
@@ -76,13 +74,13 @@ class ProsesAMIModel extends Model
         return $query->findAll();
     }
 
-    public function getProsesAMIByTahunPeriodeAkademikId($tahun_periode_akademik_id)
-    {
-        return $this->select('proses_ami.*, tahun_periode.tahun, tahun_periode.periode, standar.nama, users.nama as nama_auditor')
-            ->join('tahun_periode', 'tahun_periode.id = proses_ami.tahun_periode_id')
-            ->join('standar', 'standar.id = proses_ami.standar_id')
-            ->join('users', 'users.id = proses_ami.auditor_id')
-            ->where('proses_ami.id', $tahun_periode_akademik_id)
-            ->find();
-    }
+    // public function getProsesAMIByTahunPeriodeAkademikId($tahun_periode_akademik_id)
+    // {
+    //     return $this->select('proses_ami.*, tahun_periode.tahun, tahun_periode.periode, standar.nama, users.nama as nama_auditor')
+    //         ->join('tahun_periode', 'tahun_periode.id = proses_ami.tahun_periode_id')
+    //         ->join('standar', 'standar.id = proses_ami.standar_id')
+    //         ->join('users', 'users.id = proses_ami.auditor_id')
+    //         ->where('proses_ami.id', $tahun_periode_akademik_id)
+    //         ->find();
+    // }
 }

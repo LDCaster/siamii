@@ -28,6 +28,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
+                                <th scope="col">Sub Standar</th>
                                 <th scope="col">Butir Mutu</th>
                                 <th scope="col">Indikator Target</th>
                                 <th scope="col">Aksi</th>
@@ -38,6 +39,7 @@
                             <?php foreach ($hasilAMI as $hasil) : ?>
                                 <tr>
                                     <th scope="row"><?= $i++; ?></th>
+                                    <td><?= $hasil['sub_standar']; ?></td>
                                     <td id="left-align"><?= $hasil['butiran_mutu_isi']; ?></td>
                                     <td><?= $hasil['indikator_target']; ?></td>
 

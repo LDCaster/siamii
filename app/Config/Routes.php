@@ -72,3 +72,8 @@ $routes->get('/hasil-ami/create/(:num)', 'HasilAMIController::create/$1');
 $routes->post('/hasil-ami/save', 'HasilAMIController::save');
 $routes->get('/get-butiran-mutu/(:num)', 'HasilAMIController::getButiranMutu/$1');
 $routes->get('hasil-ami/delete/(:num)', 'HasilAMIController::delete/$1');
+
+$routes->get('/evaluasi-diri', 'AuditeeController::index');
+$routes->get('hasil-ami/detail/(:num)', 'AuditeeController::detail/$1');
+$routes->get('hasil-ami/evaluasi-diri/(:num)', 'AuditeeController::viewEvaluasiDiri/$1');
+$routes->post('hasil-ami/update-evaluasi-diri/(:num)', 'AuditeeController::updateEvaluasiDiri/$1');

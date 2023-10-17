@@ -22,7 +22,7 @@
                     <select class="form-control <?= (session('errors.sub_standar_id')) ? 'is-invalid' : ''; ?>" id="sub_standar_id" name="sub_standar_id" placeholder="Sub Standar" value="<?= old('sub_standar_id'); ?>" aria-label="Default select example">
                         <option selected>--- Pilih Sub Standar ---</option>
                         <?php foreach ($prosesAMI as $proses) : ?>
-                            <option value="<?= $proses['id']; ?>" data-sub-standar-id="<?= $proses['sub_standar_id']; ?>"><?= $proses['nama_sub_standar']; ?></option>
+                            <option value="<?= $proses['nama_sub_standar']; ?>" data-sub-standar-id="<?= $proses['sub_standar_id']; ?>"><?= $proses['nama_sub_standar']; ?></option>
                         <?php endforeach; ?>
                     </select>
 
