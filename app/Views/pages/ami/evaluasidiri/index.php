@@ -16,6 +16,11 @@
         <table class="table-borderless">
             <tbody>
                 <tr>
+                    <td><strong>Standar </strong></td>
+                    <td style="padding-left: 20px;"> : </td>
+                    <td style="padding-left: 10px;"><?= $hasilAMI['nama_standar']; ?></td>
+                </tr>
+                <tr>
                     <td><strong>Sub Standar </strong></td>
                     <td style="padding-left: 20px;"> : </td>
                     <td style="padding-left: 10px;"><?= $hasilAMI['sub_standar']; ?></td>

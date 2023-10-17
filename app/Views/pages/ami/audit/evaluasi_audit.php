@@ -38,7 +38,7 @@
                             <?php foreach ($prosesAMI as $proses) : ?>
                                 <tr>
                                     <th scope="row"><?= $i++; ?></th>
-                                    <td><span class="green-box"><?= $proses['tahun']; ?></span> - <?= $proses['periode']; ?> / <?= $proses['standar']; ?></td>
+                                    <td><span class="green-box"><?= $proses['tahun']; ?></span> - <?= $proses['periode']; ?> / <?= $proses['nama']; ?></td>
                                     <td><?= $proses['tgl_mulai']; ?> - <?= $proses['tgl_selesai']; ?></td>
                                     <td>
                                         <?php if ($proses['status'] == 1 || $isAdmin) : ?>

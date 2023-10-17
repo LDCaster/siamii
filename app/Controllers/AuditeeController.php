@@ -49,8 +49,8 @@ class AuditeeController extends BaseController
         // Ambil data evaluasi berdasarkan h_ami_id
         $evaluasi = $this->evaluasiModel->where('h_ami_id', $hAmiId)->first();
 
-        $hasilAMI = $this->hasilAMIModel->where('id', $hAmiId)->first();;
-
+        $hasilAMI = $this->hasilAMIModel->getDataforViewEvaluasiDiri($hAmiId);
+        // dd($hasilAMI);
         // Jika data evaluasi tidak ditemukan, redirect atau tampilkan pesan error
         if (!$evaluasi) {
             return redirect()->to('/error404'); // Ganti dengan URL halaman error jika diperlukan

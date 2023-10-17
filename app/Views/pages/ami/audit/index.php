@@ -19,6 +19,16 @@
                     <td class="card-title">Pelaksanaan AMI</td>
                 </tr>
                 <tr>
+                    <td><strong>Standar </strong></td>
+                    <td style="padding-left: 20px;"> : </td>
+                    <td style="padding-left: 10px;"><?= $hasilAMI['nama_standar']; ?></td>
+                </tr>
+                <tr>
+                    <td><strong>Sub Standar </strong></td>
+                    <td style="padding-left: 20px;"> : </td>
+                    <td style="padding-left: 10px;"><?= $hasilAMI['sub_standar']; ?></td>
+                </tr>
+                <tr>
                     <td><strong>Butiran Mutu </strong></td>
                     <td style="padding-left: 20px;"> : </td>
                     <td style="padding-left: 10px;"><?= $hasilAMI['butiran_mutu_isi']; ?></td>
