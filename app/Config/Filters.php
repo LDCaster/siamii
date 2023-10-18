@@ -29,7 +29,7 @@ class Filters extends BaseConfig
         'isNotAdmin'                    => \App\Filters\AdminOnlyFilter::class,
         'isNotAuditee'                  => \App\Filters\AuditeeAdminFilter::class,
         'isNotAuditor'                  => \App\Filters\AuditorAdminFilter::class,
-        'checkStatusProsesAmi'          => \App\Filters\ProsesAmiStatusFilter::class,
+        'checkStatusProsesAmi'          => \App\Filters\ProsesAMIStatusFilter::class,
     ];
 
     /**

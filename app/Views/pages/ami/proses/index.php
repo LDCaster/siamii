@@ -1,4 +1,4 @@
-    <?= $this->extend('Layout/template'); ?>
+    <?= $this->extend('layout/template'); ?>
 
     <?= $this->section('content'); ?>
 

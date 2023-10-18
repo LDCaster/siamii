@@ -108,11 +108,4 @@
         </li>
     <?php endif; ?>
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="<?= base_url('user-profile'); ?>">
-            <i class="bi bi-person"></i>
-            <span>Profile</span>
-        </a>
-    </li><!-- End Profile Page Nav -->
-
 </ul>
