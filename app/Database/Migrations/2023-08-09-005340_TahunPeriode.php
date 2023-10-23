@@ -10,7 +10,7 @@ class TahunPeriode extends Migration
     {
         $this->forge->addField([
             'id' => ['type' => 'INT', 'constraint' => 5, 'unsigned' => true, 'auto_increment' => true],
-            'tahun' => ['type' => 'INT', 'constraint' => 4],
+            'tahun' => ['type' => 'VARCHAR', 'constraint' => 10],
             'periode' => ['type' => 'VARCHAR', 'constraint' => 50],
             'created_at' => ['type' => 'DATETIME', 'null' => true],
             'updated_at' => ['type' => 'DATETIME', 'null' => true],

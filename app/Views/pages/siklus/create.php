@@ -12,10 +12,10 @@
         <!-- Floating Labels Form -->
         <form action="<?= base_url('/siklus/save'); ?>" method="post" class="row g-3">
             <?= csrf_field(); ?>
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-floating">
-                    <input type="number" class="form-control <?= (session('errors.tahun')) ? 'is-invalid' : ''; ?>" id="tahun" name="tahun" placeholder="Tahun Akademik" value="<?= old('tahun'); ?>">
-                    <label for="tahun">Tahun Akademik</label>
+                    <input type="text" class="form-control <?= (session('errors.tahun')) ? 'is-invalid' : ''; ?>" id="tahun" name="tahun" placeholder="Tahun Akademik" value="<?= old('tahun'); ?>">
+                    <label for="tahun">Tahun Akademik <span style="color: red;">*</span></label>
                     <?php if (session('errors') && array_key_exists('tahun', session('errors'))) : ?>
                         <div class="invalid-feedback">
                             <?= session('errors')['tahun']; ?>
@@ -23,7 +23,7 @@
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-floating">
                     <select class="form-control <?= (session('errors.periode')) ? 'is-invalid' : ''; ?>" id="periode" name="periode" placeholder="Periode Akademik" value="<?= old('periode'); ?>">
                         <option selected>--- Pilih Periode Akademik ---</option>
@@ -31,7 +31,7 @@
                         <option value="Genap">Genap</option>
                         <option value="Tahunan">Tahunan</option>
                     </select>
-                    <label for="periode">Periode Akademik</label>
+                    <label for="periode">Periode Akademik <span style="color: red;">*</span></label>
                     <?php if (session('errors') && array_key_exists('periode', session('errors'))) : ?>
                         <div class="invalid-feedback">
                             <?= session('errors')['periode']; ?>

@@ -21,7 +21,7 @@ class SiklusController extends BaseController
     {
         $siklus = $this->tahunperiodeModel->getDataByYear();
         $data = [
-            'title' => 'Data Siklus',
+            'title' => 'Data Periode Akademik',
             'siklus' => $siklus
         ];
 
@@ -31,7 +31,7 @@ class SiklusController extends BaseController
     public function create()
     {
         $data = [
-            'title' => 'Tambah Siklus',
+            'title' => 'Tambah Periode Akademik',
             'validation' => \Config\Services::validation()
         ];
         return view('/pages/siklus/create', $data);
@@ -90,7 +90,7 @@ class SiklusController extends BaseController
             return redirect()->to('/siklus')->with('errors', 'Data Siklus Tidak Ditemukan!');
         }
         $data = [
-            'title' => 'Edit Siklus',
+            'title' => 'Edit Periode AKademik',
             'siklus' => $siklus,
             'validation' => \Config\Services::validation()
         ];
