@@ -15,7 +15,7 @@
                             <option value="<?= $s['id']; ?>" <?= ($s['id'] == $isi[0]['standar_id']) ? 'selected' : ''; ?>><?= $s['nama']; ?> - <?= $s['tahun_periode']; ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <label for="floatingName">Standar</label>
+                    <label for="floatingName">Standar <span style="color: red;">*</span></label>
                     <?php if (session('errors') && array_key_exists('standar_id', session('errors'))) : ?>
                         <div class="invalid-feedback">
                             <?= session('errors')['standar_id']; ?>
@@ -32,7 +32,7 @@
                             <option value="<?= $sub['id']; ?>" <?= ($sub['id'] == $isi[0]['sub_standar_id']) ? 'selected' : ''; ?>><?= $sub['nama_sub']; ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <label for="floatingName">Sub Standar</label>
+                    <label for="floatingName">Sub Standar <span style="color: red;">*</span></label>
                     <?php if (session('errors') && array_key_exists('nama_sub', session('errors'))) : ?>
                         <div class="invalid-feedback">
                             <?= session('errors')['nama_sub']; ?>
@@ -42,6 +42,7 @@
             </div>
 
             <div class="col-md-12">
+                <label for="floatingName">Butiran Isi <span style="color: red;">*</span></label>
                 <div class="form-floating mb-3">
                     <textarea name="butiran_mutu_isi" id="butiran_mutu_isi" class="ckeditor"><?= (old('butiran_mutu_isi')) ? old('butiran_mutu_isi') : $isi[0]['butiran_mutu_isi']; ?></textarea>
 

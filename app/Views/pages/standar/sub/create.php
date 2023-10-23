@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="form-floating">
                     <input type="text" class="form-control <?= (session('errors.nama_sub')) ? 'is-invalid' : ''; ?>" id="nama_sub" name="nama_sub" placeholder="Nama Sub Standar" value="<?= old('nama_sub'); ?>">
-                    <label for="nama_sub">Nama Sub Standar</label>
+                    <label for="nama_sub">Nama Sub Standar <span style="color: red;">*</span></label>
                     <?php if (session('errors')) : ?>
                         <?php if (array_key_exists('nama_sub', session('errors'))) : ?>
                             <div class="invalid-feedback">

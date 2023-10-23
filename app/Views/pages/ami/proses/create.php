@@ -15,7 +15,7 @@
         <!-- Floating Labels Form -->
         <form action="<?= base_url('/proses-ami/save'); ?>" method="post" class="row g-3">
             <?= csrf_field(); ?>
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <div class="form-floating mb-3">
                     <select class="form-select <?= (session('errors.tahun_periode_id')) ? 'is-invalid' : ''; ?>" aria-label="Unit" id="tahun_periode_id" name="tahun_periode_id">
                         <option selected>--- Pilih Periode ---</option>
@@ -23,7 +23,7 @@
                             <option value="<?= $u['id']; ?>"><?= $u['tahun']; ?> - <?= $u['periode']; ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <label for="tahun_periode_id">Periode</label>
+                    <label for="tahun_periode_id">Periode <span style="color: red;">*</span></label>
                     <?php if (session('errors')) : ?>
                         <?php if (array_key_exists('tahun_periode_id', session('errors'))) : ?>
                             <div class="invalid-feedback">
@@ -33,7 +33,7 @@
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="form-floating mb-3">
                     <select class="form-select <?= (session('errors.standar_id')) ? 'is-invalid' : ''; ?>" aria-label="Unit" id="standar_id" name="standar_id">
                         <option selected>--- Pilih Standar ---</option>
@@ -41,7 +41,7 @@
                             <option value="<?= $s['id']; ?>"><?= $s['nama']; ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <label for="standar_id">Standar</label>
+                    <label for="standar_id">Standar <span style="color: red;">*</span></label>
                     <?php if (session('errors')) : ?>
                         <?php if (array_key_exists('standar_id', session('errors'))) : ?>
                             <div class="invalid-feedback">
@@ -59,7 +59,7 @@
                             <option value="<?= $u['id']; ?>"><?= $u['nama']; ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <label for="auditor_id">Auditor</label>
+                    <label for="auditor_id">Auditor <span style="color: red;">*</span></label>
                     <?php if (session('errors')) : ?>
                         <?php if (array_key_exists('auditor_id', session('errors'))) : ?>
                             <div class="invalid-feedback">
@@ -69,10 +69,10 @@
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-floating">
                     <input type="date" class="form-control <?= (session('errors.tgl_mulai')) ? 'is-invalid' : ''; ?>" id="tgl_mulai" name="tgl_mulai" placeholder="tgl_mulai Akademik" value="<?= old('tgl_mulai'); ?>">
-                    <label for="tgl_mulai">Tanggal Mulai</label>
+                    <label for="tgl_mulai">Tanggal Mulai <span style="color: red;">*</span></label>
                     <?php if (session('errors') && array_key_exists('tgl_mulai', session('errors'))) : ?>
                         <div class="invalid-feedback">
                             <?= session('errors')['tgl_mulai']; ?>
@@ -80,10 +80,10 @@
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-floating">
                     <input type="date" class="form-control <?= (session('errors.tgl_selesai')) ? 'is-invalid' : ''; ?>" id="tgl_selesai" name="tgl_selesai" placeholder="tgl_selesai Akademik" value="<?= old('tgl_selesai'); ?>">
-                    <label for="tgl_selesai">Tanggal Selesai</label>
+                    <label for="tgl_selesai">Tanggal Selesai <span style="color: red;">*</span></label>
                     <?php if (session('errors') && array_key_exists('tgl_selesai', session('errors'))) : ?>
                         <div class="invalid-feedback">
                             <?= session('errors')['tgl_selesai']; ?>
