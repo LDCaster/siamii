@@ -11,6 +11,9 @@ $routes->get('/login', 'AuthController::index');
 $routes->post('/login', 'AuthController::login');
 $routes->get('/logout', 'AuthController::logout');
 
+$routes->get('/user-profile', 'AuthController::profile');
+$routes->post('/update-profile', 'AuthController::updateProfile');
+
 $routes->get('/dashboard', 'DashboardController::index');
 
 $routes->get('/unit', 'UnitController::index');

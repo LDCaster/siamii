@@ -34,7 +34,7 @@ class AuthController extends BaseController
 
         $user_id = session('user_id');
         $user = $this->userModel->getDataByUserId($user_id);
-
+        // dd($user);
         $data = [
             'title' => 'Profil Pengguna',
             'user' => $user,

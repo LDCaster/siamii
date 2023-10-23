@@ -13,7 +13,7 @@ class UserModel extends Model
 
     public function getDataByUserId($userId)
     {
-        return $this->select('users.*, unir_prodi.nama AS nama')
+        return $this->select('users.*, unit_prodi.nama AS nama_unit_prodi')
             ->join('unit_prodi', 'unit_prodi.id = users.unit_prodi_id', 'left')
             ->where('users.id', $userId)
             ->first();

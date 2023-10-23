@@ -25,11 +25,11 @@
             <!-- Bagian Role -->
             <div class="col-md-6">
                 <div class="form-floating">
-                    <input type="text" class="form-control <?= (session('errors.role_id')) ? 'is-invalid' : ''; ?>" id="role_id" name="role_id" placeholder="Role" value="<?= $user['role_name']; ?>" disabled>
-                    <label for="role_id">Role</label>
-                    <?php if (session('errors') && array_key_exists('role_id', session('errors'))) : ?>
+                    <input type="text" class="form-control <?= (session('errors.role')) ? 'is-invalid' : ''; ?>" id="role" name="role" placeholder="Role" value="<?= $user['role']; ?>" disabled>
+                    <label for="role">Role</label>
+                    <?php if (session('errors') && array_key_exists('role', session('errors'))) : ?>
                         <div class="invalid-feedback">
-                            <?= session('errors')['role_id']; ?>
+                            <?= session('errors')['role']; ?>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -38,7 +38,7 @@
             <!-- Bagian Unit -->
             <div class="col-md-6">
                 <div class="form-floating">
-                    <input type="text" class="form-control <?= (session('errors.unit_prodi_id')) ? 'is-invalid' : ''; ?>" id="unit_prodi_id" name="unit_prodi_id" placeholder="Unit" value="<?= $user['unit_prodi']; ?>" disabled>
+                    <input type="text" class="form-control <?= (session('errors.unit_prodi_id')) ? 'is-invalid' : ''; ?>" id="unit_prodi_id" name="unit_prodi_id" placeholder="Unit" value="<?= $user['nama_unit_prodi']; ?>" disabled>
                     <label for="unit_prodi_id">Unit</label>
                     <?php if (session('errors') && array_key_exists('unit_prodi_id', session('errors'))) : ?>
                         <div class="invalid-feedback">
