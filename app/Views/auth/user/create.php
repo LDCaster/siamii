@@ -7,14 +7,17 @@
         <!-- Floating Labels Form -->
         <form action="<?= base_url('user/save'); ?>" method="post" class="row g-3" enctype="multipart/form-data">
             <?= csrf_field(); ?>
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-floating">
                     <select class="form-control <?= (session('errors.role')) ? 'is-invalid' : ''; ?>" id="role" name="role" aria-label="Default select example">
+                        <option value="">--- Pilih Role ---</option>
                         <option value="admin" <?= (old('role') == 'admin') ? 'selected' : ''; ?>>Admin</option>
                         <option value="auditee" <?= (old('role') == 'auditee') ? 'selected' : ''; ?>>Auditee</option>
                         <option value="auditor" <?= (old('role') == 'auditor') ? 'selected' : ''; ?>>Auditor</option>
                     </select>
-                    <label for="role">Role</label>
+                    <label for="role">
+                        Role <span style="color: red;">*</span>
+                    </label>
                     <?php if (session('errors') && array_key_exists('role', session('errors'))) : ?>
                         <div class="invalid-feedback">
                             <?= session('errors')['role']; ?>
@@ -23,7 +26,7 @@
                 </div>
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-floating">
                     <select class="form-control <?= (session('errors.unit_prodi_id')) ? 'is-invalid' : ''; ?>" id="unit_prodi_id" name="unit_prodi_id" placeholder="Unit" aria-label="Default select example">
                         <option>--- Pilih Unit ---</option>
@@ -33,7 +36,7 @@
                             </option>
                         <?php endforeach; ?>
                     </select>
-                    <label for="floatingName">Unit</label>
+                    <label for="floatingName">Unit <span style="color: red;">*</span></label>
                     <?php if (session('errors') && array_key_exists('unit_prodi_id', session('errors'))) : ?>
                         <div class="invalid-feedback">
                             <?= session('errors')['unit_prodi_id']; ?>
@@ -41,10 +44,10 @@
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <div class="form-floating">
                     <input type="text" class="form-control <?= (session('errors.nik_nip')) ? 'is-invalid' : ''; ?>" id="nik_nip" name="nik_nip" placeholder="NIK/NIP" value="<?= old('nik_nip'); ?>">
-                    <label for="floatingName">NIK/NIP</label>
+                    <label for="floatingName">NIK/NIP <span style="color: red;">*</span></label>
                     <?php if (session('errors')) : ?>
                         <?php if (array_key_exists('nik_nip', session('errors'))) : ?> <!-- Tambahkan kondisi if ini -->
                             <div class="invalid-feedback">
@@ -54,10 +57,10 @@
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="form-floating">
                     <input type="text" class="form-control <?= (session('errors.nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" placeholder="Nama" value="<?= old('nama'); ?>">
-                    <label for="floatingName">Nama</label>
+                    <label for="floatingName">Nama <span style="color: red;">*</span></label>
                     <?php if (session('errors')) : ?>
                         <?php if (array_key_exists('nama', session('errors'))) : ?> <!-- Tambahkan kondisi if ini -->
                             <div class="invalid-feedback">
@@ -67,7 +70,7 @@
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <div class="form-floating">
                     <input type="text" class="form-control <?= (session('errors.jabatan')) ? 'is-invalid' : ''; ?>" id="jabatan" name="jabatan" placeholder="No Telp" value="<?= old('jabatan'); ?>">
                     <label for="floatingName">Jabatan</label>
@@ -80,7 +83,22 @@
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="col-md-12">
+
+            <div class="col-md-8">
+                <div class="form-floating">
+                    <input type="text" class="form-control <?= (session('errors.email')) ? 'is-invalid' : ''; ?>" id="email" name="email" placeholder="Image" value="<?= old('email'); ?>">
+                    <label for="floatingName">E-mail <span style="color: red;">*</span></label>
+                    <?php if (session('errors')) : ?>
+                        <?php if (array_key_exists('email', session('errors'))) : ?> <!-- Tambahkan kondisi if ini -->
+                            <div class="invalid-feedback">
+                                <?= session('errors')['email']; ?>
+                            </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+
+            <div class="col-md-6">
                 <div class="form-floating">
                     <input type="file" class="form-control <?= (session('errors.image')) ? 'is-invalid' : ''; ?>" id="image" name="image" placeholder="Image" value="<?= old('image'); ?>">
                     <label for="image">Image</label>
@@ -95,27 +113,14 @@
             </div>
 
             <!-- Display the selected image for new user -->
-            <div class="col-md-12 mt-3">
+            <div class="col-md-6 mt-3">
                 <img id="image-preview" src="<?= base_url('assets/img/profile/default.png'); ?>" alt="Selected Image" width="100" class="rounded-circle">
             </div>
 
-            <div class="col-md-12">
-                <div class="form-floating">
-                    <input type="text" class="form-control <?= (session('errors.email')) ? 'is-invalid' : ''; ?>" id="email" name="email" placeholder="Image" value="<?= old('email'); ?>">
-                    <label for="floatingName">E-mail</label>
-                    <?php if (session('errors')) : ?>
-                        <?php if (array_key_exists('email', session('errors'))) : ?> <!-- Tambahkan kondisi if ini -->
-                            <div class="invalid-feedback">
-                                <?= session('errors')['email']; ?>
-                            </div>
-                        <?php endif; ?>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-floating">
                     <input type="password" class="form-control <?= (session('errors.password')) ? 'is-invalid' : ''; ?>" id="password" name="password" placeholder="***" value="<?= old('password'); ?>">
-                    <label for="floatingName">Password</label>
+                    <label for="floatingName">Password <span style="color: red;">*</span></label>
                     <?php if (session('errors')) : ?>
                         <?php if (array_key_exists('password', session('errors'))) : ?> <!-- Tambahkan kondisi if ini -->
                             <div class="invalid-feedback">
@@ -125,10 +130,10 @@
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-floating">
                     <input type="password" class="form-control <?= (session('errors.verifikasi_password')) ? 'is-invalid' : ''; ?>" id="verifikasi_password" name="verifikasi_password" placeholder="***" value="<?= old('verifikasi_password'); ?>">
-                    <label for="floatingName">Verifikasi Password</label>
+                    <label for="floatingName">Verifikasi Password <span style="color: red;">*</span></label>
                     <?php if (session('errors')) : ?>
                         <?php if (array_key_exists('verifikasi_password', session('errors'))) : ?> <!-- Tambahkan kondisi if ini -->
                             <div class="invalid-feedback">
